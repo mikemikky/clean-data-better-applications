@@ -1,0 +1,12 @@
+id,name,age,income
+101,John,25,50000
+102,Mary,30,65000
+103,Peter,,45000
+104,Grace,28,70000
+101,John,25,50000
+105,David,150,60000
+106,Anna,32,-50000
+107,James,40,80000
+108,Sarah,27,55000
+109,Michael,,Unknown
+110,Paul,35,72000
