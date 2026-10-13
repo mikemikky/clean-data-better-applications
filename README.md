@@ -1,15 +1,15 @@
 Clean Data, Better Applications
-
 A Python data validation and cleaning project that demonstrates how simple validation rules can help improve data quality in applications.
 
-Overview
+## Application Preview
+![clean Data application dashboard](screenshots/dashboard.png/dashboardc.png)
 
+Overview
 Data quality is important for building reliable software. Missing values, invalid ages, negative income values, and duplicate records can cause problems when applications process data.
 
 This project uses Python and Flask to validate uploaded CSV files, identify common data quality issues, and provide a cleaned CSV file for download.
 
 Features
-
 * Upload CSV files through a web interface.
 * Validate required columns: id, name, age, and income.
 * Identify missing or invalid age values.
