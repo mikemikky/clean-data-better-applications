@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Data, Better Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f4f7fb;
+            color: #222;
+        }
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px #0001;
+        }
+        button {
+            background: #1769aa;
+            color: white;
+            border: 0;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .error { color: #b42318; }
+        .success { color: #067647; }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>Clean Data, Better Applications</h1>
+        <p>Use Python to identify and correct common CSV data problems.</p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Choose a CSV file:</label>
+            <p>
+                <input type="file" id="file" name="file" accept=".csv" required>
+            </p>
+            <button type="submit">Validate and Clean Data</button>
+        </form>
+
+        {% if report %}
+            <h2>Data Quality Report</h2>
+            <p>Original records: {{ report.original }}</p>
+            <p>Records with issues: {{ report.affected }}</p>
+            <p>Total validation issues: {{ report.issues }}</p>
+            <p>Duplicate records removed: {{ report.duplicates }}</p>
+            <p>Cleaned records: {{ report.cleaned }}</p>
+
+            <h3>Issue breakdown</h3>
+
+{% if report.breakdown %}
+    <canvas id="issueChart" height="220"></canvas>
+
+    <ul>
+        {% for issue, count in report.breakdown.items() %}
+            <li>{{ issue }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No validation issues found.</p>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% if report.breakdown %}
+<script>
+    const issueLabels = {{ report.breakdown.keys() | list | tojson }};
+    const issueCounts = {{ report.breakdown.values() | list | tojson }};
+
+    new Chart(document.getElementById("issueChart"), {
+        type: "bar",
+        data: {
+            labels: issueLabels,
+            datasets: [{
+                label: "Number of issues",
+                data: issueCounts
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+
+            <p class="success">
+                Your file has been processed.
+            </p>
+            <a href="{{ url_for('download_file') }}">Download cleaned CSV</a>
+        {% endif %}
+    </div>
+</body>
+</html>
