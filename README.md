@@ -1,21 +1,24 @@
-Clean Data, Better Applications: Simple Data Validation with Python
+Clean Data, Better Applications
 
-Project Overview
+A Python data validation and cleaning project that demonstrates how simple validation rules can help improve data quality in applications.
 
-This project demonstrates how Python can identify and handle common data-quality problems in CSV files.
+Overview
 
-It was developed as a practical learning project to explore data validation, data cleaning, automated testing, and web application development.
+Data quality is important for building reliable software. Missing values, invalid ages, negative income values, and duplicate records can cause problems when applications process data.
+
+This project uses Python and Flask to validate uploaded CSV files, identify common data quality issues, and provide a cleaned CSV file for download.
 
 Features
 
 * Upload CSV files through a web interface.
-* Detect missing values and invalid ages.
-* Identify negative income values.
-* Detect and remove duplicate IDs.
-* Replace selected missing or invalid values with Unknown.
-* Display a data-quality report and bar chart.
-* Download the cleaned CSV file.
-* Run automated tests to check core validation and cleaning functions.
+* Validate required columns: id, name, age, and income.
+* Identify missing or invalid age values.
+* Flag negative income values.
+* Detect duplicate IDs.
+* Generate a data quality report.
+* Download the cleaned CSV output.
+* Reject unsupported file types and CSV files missing required columns.
+* Run automated tests with Python’s unittest framework.
 
 Technologies Used
 
@@ -23,46 +26,67 @@ Technologies Used
 * Flask
 * HTML and CSS
 * Chart.js
-* Python unittest
-* CSV file handling
+* CSV data processing
+* unittest
 
 Project Structure
 
-clean_data_project/
+clean-data-better-applications/
 ├── app.py
 ├── main.py
 ├── test_main.py
 ├── sample_data.csv
-├── cleaned_data.csv
 ├── README.md
 └── templates/
     └── index.html
 
-How to Run the Project
+Getting Started
 
-1. Install Python.
-2. Install Flask:
-    python -m pip install flask
-3. Start the web application:
-    python app.py
-4. Open http://127.0.0.1:5000 in your browser.
-5. Upload a CSV file containing the required columns: id, name, age, and income.
-6. Review the data-quality report and download the cleaned file.
+1. Clone the repository
 
-Run the Automated Tests
+git clone https://github.com/mikemikky/clean-data-better-applications.git
+cd clean-data-better-applications
 
-Run:
+2. Create a virtual environment
 
-python -m unittest -v
+python -m venv venv
 
-The tests check selected validation and cleaning behaviours, including missing ages, invalid ages, negative income, and duplicate IDs.
+Activate it on Windows:
 
-Dataset and Limitations
+venv\Scripts\activate
 
-The included sample dataset contains synthetic practice records, not real personal or financial data.
+3. Install Flask
 
-This project is a learning prototype. It is not yet designed for large datasets, concurrent users, or public production deployment. Replacing invalid values with Unknown is a simplified demonstration and may not be appropriate for every real-world application.
+python -m pip install Flask
 
-Learning Goals
+4. Run the application
 
-This project explores how validation rules, automated tests, and clear reporting can improve confidence in data used by software applications.
+python app.py
+
+Open the local address displayed in your terminal in your web browser.
+
+Run the Tests
+
+Run the automated tests with:
+
+python -m unittest
+
+Sample Data
+
+The repository includes sample_data.csv for testing common data quality issues. It contains synthetic practice data and should not be treated as real-world or official statistics.
+
+Limitations
+
+This is a learning project and prototype. Its validation rules are intentionally simple and may need to be adapted for different datasets and business requirements. It has not been presented as a production-ready data processing system.
+
+Future Improvements
+
+* Add more configurable validation rules.
+* Improve validation summaries and reporting.
+* Expand automated test coverage.
+* Improve handling of larger datasets.
+* Prepare the application for secure production deployment.
+
+Author
+
+Created by mikemikky as a practical Python software development project exploring data validation, data cleaning, and web application development.
