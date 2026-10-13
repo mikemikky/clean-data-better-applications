@@ -76,11 +76,9 @@ Sample Data
 The repository includes sample_data.csv for testing common data quality issues. It contains synthetic practice data and should not be treated as real-world or official statistics.
 
 Limitations
-
 This is a learning project and prototype. Its validation rules are intentionally simple and may need to be adapted for different datasets and business requirements. It has not been presented as a production-ready data processing system.
 
 Future Improvements
-
 * Add more configurable validation rules.
 * Improve validation summaries and reporting.
 * Expand automated test coverage.
@@ -88,5 +86,19 @@ Future Improvements
 * Prepare the application for secure production deployment.
 
 Author
-
 Created by mikemikky as a practical Python software development project exploring data validation, data cleaning, and web application development.
+
+Project Roadmap
+
+* [x]	Build a CSV validation and cleaning application.
+* [x]	Create a Flask web interface for uploading CSV files.
+* [x]	Generate data quality reports and cleaned CSV downloads.
+* [x]	Add automated tests for core validation logic.
+* [x]	Document installation and usage instructions.
+* [x]	Add an application screenshot to the README.
+* [ ]	Expand automated test coverage.
+* [ ]	Improve validation rules and error reporting.
+* [ ]	Prepare the application for secure public deployment.
+
+Learning Goals
+This project helps me develop practical skills in Python programming, data validation, automated testing, and web application development. I plan to improve it incrementally as I learn new techniques.
